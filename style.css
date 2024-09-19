@@ -1,0 +1,216 @@
+﻿@font-face 
+{
+    font-family: avantGarde;
+    src: url("AVANT.otf");
+}
+
+@font-face 
+{
+    font-family: slackey;
+    src: url("Slackey-Regular.ttf");
+}
+
+@font-face 
+{
+    font-family: roboto;
+    src: url("Roboto-Black.ttf");
+}
+
+body
+{
+    background-color: rgb(241, 241, 241);
+    margin-bottom:50px;
+    font-family: arial,sans-serif;
+}
+
+#main
+{
+    width: 825px;
+    height: 10%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*
+#banner {
+    width: 100%;
+    height: 70px;
+    font-size: 2.4em;
+    font-style: normal;
+    color: rgb(206, 206, 206);
+    text-align: center;
+    line-height: 100px;
+    margin-top: 50px;
+    margin-bottom: 5px;
+    box-shadow: 0px 0px 4px #808080;
+}
+*/
+
+#banner
+{
+    width: 100%;
+    height: 70px;
+    font-size: 3.0em;
+    font-style: bold;
+    /*color: #000000;*/
+    color: rgb(255, 255, 255);
+    text-align: center;
+    line-height: 75px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    font-family: roboto;
+
+    text-shadow: 
+    -1px -1px 0 rgb(0, 0, 0, 0.04),
+    1px -1px 0 rgb(0, 0, 0, 0.04),
+    -1px 1px 0 rgb(0, 0, 0, 0.04), 
+    1px 1px 0 rgba(0, 0, 0, 0.04),
+    0px 1px 5px rgba(197, 197, 197, 0.7),
+    0px 2px 5px rgba(197, 197, 197, 0.6),
+    0px 3px 5px rgba(197, 197, 197, 0.5),
+    0px 4px 5px rgba(197, 197, 197, 0.4),
+    0px 5px 5px rgba(197, 197, 197, 0.3),
+    0px 6px 5px rgba(197, 197, 197, 0.2),
+    0px 7px 5px rgba(197, 197, 197, 0.1);
+}
+
+#bannerSmall 
+{
+    float: left;
+    width: 100%;
+    height: 30px;
+    /* font things */
+    font-size: 1.4em;
+    /*font-style: bold;*/
+    font-style: normal;
+    font-family: roboto;
+    color: rgb(206, 206, 206);
+    text-align: left;
+    line-height: 40px;
+    margin-top: 20px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+div#box{
+    background-color: white;
+    padding: 5px 5px;
+    border: #999 1px solid;
+    width: 256px;
+    height: 128px;
+    transition-duration: 0.2s;
+    float: left;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+div#box:hover {
+    /* make it a litte bigger */
+    /* translate box */
+    -ms-transform: translateY(-4px);
+    -webkit-transform: translateY(-4px);
+    transform: translateY(-4px);
+    /* add bigger shadow */
+    box-shadow: 0px 0px 4px #808080;
+}
+
+hr.line{
+    width: 825px;
+    border: 0; 
+    height: 2px;
+    float: left;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+hr.line, hr.line:before{
+    background: radial-gradient(ellipse at center, rgb(231, 231, 231) 50%, rgb(241, 241, 241) 50%);
+}
+hr.line:after{
+    background: #f4f4f4;
+}
+
+#container {
+    width: 826px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#containerSchool {
+    width: 826px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img.port {
+    width: 256px;
+    height: 128px;
+    color: gray;
+}
+img.port:hover {
+    color: blue;
+    background-color: blue;
+}
+
+
+div#sociallink
+{
+    font-family: roboto;
+    background-color: white;
+    padding: 5px 5px;
+    border: #999 1px solid;
+    width: 150px;
+    height: 40px;
+    transition-duration: 0.2s;
+    float: left;
+    margin-left: 5px;
+
+    border-radius: 0px;
+
+  
+    font-size: 1.4em;
+
+    -ms-transform: scaleX(0.7) scaleY(0.7);
+    -webkit-transform: scaleX(0.7) scaleY(0.7);
+    transform: scaleX(0.7) scaleY(0.7);
+}
+div#sociallink:hover 
+{
+    -ms-transform: translateY(-4px) scaleX(0.8) scaleY(0.8);
+    -webkit-transform: translateY(-4px) scaleX(0.8) scaleY(0.8);
+    transform: translateY(-4px) scaleX(0.8) scaleY(0.8);
+    box-shadow: 0px 0px 4px #808080;
+}
+
+a.social 
+{
+    font-family: roboto;
+    background-color: #489dff;
+    padding: 5px 5px;
+    border: rgba(0, 0, 0, 0.075) 1px solid;
+    width: 120px;
+    height: 30px;
+    transition-duration: 0.2s;
+    float: left;
+    margin-left: 5px;
+
+    border-radius: 30px;
+
+    line-height: 30px;
+    font-size: 1.4em;
+    float: left;
+    
+    /* TEXT */
+    text-align: center;
+ 
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+a.social:hover 
+{
+    -ms-transform: translateY(-5f) scaleX(1.1) scaleY(1.1);
+    -webkit-transform: translateY(-5f) scaleX(1.1) scaleY(1.1);
+    transform: translateY(-5f) scaleX(1.1) scaleY(1.1);
+    
+    background-color: #288cff;
+}

@@ -1,0 +1,70 @@
+﻿@font-face 
+{
+    font-family: roboto;
+    src: url("Roboto-Black.ttf");
+}
+
+#header
+ {
+    background-color: #489dff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 30px;
+    left: 50%;
+    margin-left: -50%;
+    box-shadow: 0px 0px 2px #808080;
+
+    font-family: roboto;
+}
+
+a.headerbutton {
+    padding: 5px 5px;
+    width: 100px;
+    height: 18px;
+    overflow: auto;
+    /*background-color: #e9e9e9;*/
+    border: 1px solid #4e4e4e00;
+    float: left;
+    /* TEXT */
+    text-align: center;
+    line-height: 100%; 
+    color: white;
+    text-decoration: none;
+}
+
+a.headerbutton:hover {
+    background-color: #ffffff23;
+}
+
+
+
+#headerdiv {
+    padding: 5px 5px;
+    width: 580px;
+    height: 18px;
+    float: left;
+    /* TEXT */
+    text-align: center;
+    color: white;
+    line-height: 1.0em; 
+    text-decoration: none;
+}
+
+#push {
+    width: 100%; 
+    height: 16px; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#headercontainer {
+    background-color: #5b5b5b00;
+    width: 825px;
+    height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="gamepage.css" />
+    <title></title>
+
+    <!--  image viewer script -->
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="viewscript.js"></script>
+
+    <!--<script type="text/javascript" src="../ladybazooka_data.js"></script>-->
+    <script type="text/javascript">
+
+        function createVideo(link) {
+            var videoPlayer = `
+            <div class='centeredvideo'>
+                <video width='800' height='450' class='videostyler' controls='controls'>
+                    <source src='videoPath' type='video/mp4'>
+                        Your browser does not support the video tag.
+                </video> 
+            </div>`;
+
+            var res = videoPlayer.replace("videoPath", link);
+            var para = document.createElement("div");
+            para.id = "game";
+            para.className = "gamevideocontainer";
+            para.innerHTML = res;
+            document.getElementById("video").appendChild(para);
+        }
+
+        function createYoutubeVideo(link) {
+            var videoPlayer = `
+            <div class='centeredvideo'>
+                <iframe width='800' height='450'
+                    src='videoPath'>
+                </iframe>
+            </div>`;
+
+            var res = videoPlayer.replace("videoPath", link);
+
+            var para = document.createElement("div");
+            para.id = "game";
+            para.className = "gamevideocontainer";
+            para.innerHTML = res;
+            document.getElementById("video").appendChild(para);
+        }
+
+        // array with x*2 values tmb, img
+        function createImageBar(imageDataArray) {
+            for (var i = 0; i < imageDataArray.length; i++) {
+                var para = document.createElement("div");
+                para.className = "visualbox";
+
+                openfile = "display('" + imageDataArray[i].src + "');";
+                console.log(openfile);
+
+                para.innerHTML = "<img class='visual' src=" + imageDataArray[i].thmb + " onclick=" + openfile + " />";
+                document.getElementById("visualcontentcenter").appendChild(para);
+            }
+        }
+
+        function safeTags(str) {
+            str = str.replace('<', '&lt;');
+            str = str.replace('>', '&gt;');
+            return str;
+        }
+
+        function setProjectName(name) {
+            document.getElementById("banner").innerHTML = safeTags(name);
+        }
+
+        function setProjectText(text) {
+            document.getElementById("textBox").innerHTML = text;
+        }
+
+        function isEven(n) {
+            return n % 2 == 0;
+        }
+
+        function createSpecDiv(name, data, number) {
+
+            var specStr = `
+                    <div id='specBoxPart' >firstValue</div>
+                    <div id='specBoxPart2' >secondValue</div>`;
+
+            specStr = specStr.replace("firstValue", name);
+            specStr = specStr.replace("secondValue", data);
+
+            clss = "spec_odd";
+            if (isEven(number)) {
+                clss = "spec_even";
+            }
+
+            var para = document.createElement("div");
+            para.id = "specBox";
+            para.className = clss;
+            para.innerHTML = specStr;
+
+            document.getElementById("specTextBox").appendChild(para);
+        }
+
+        function setProjectSpec(data) {
+
+            count = 0
+            if (data.platform) {
+                createSpecDiv("Platform:", data.platform, count);
+                count++;
+            }
+
+            if (data.language) {
+                createSpecDiv("Language:", data.language, count);
+                count++;
+            }
+
+            if (data.engine) {
+                createSpecDiv("Engine:", data.engine, count);
+                count++;
+            }
+
+            if (data.team) {
+                createSpecDiv("Team:", data.team, count);
+                count++;
+            }
+
+            if (data.duration) {
+                createSpecDiv("Duration:", data.duration, count);
+                count++;
+            }
+
+            if (data.other) {
+                createSpecDiv("Other:", data.other, count);
+                count++;
+            }
+
+            var para = document.createElement("div");
+            para.id = "specBoxBump";
+            document.getElementById("specTextBox").appendChild(para);
+        }
+
+        function readParams() {
+            var params = {};
+            var paramStr = location.search.split('?')[1];
+            var pair = paramStr.split("=");
+
+            if (pair[0] == "projectid") {
+                return pair[1];
+            }
+
+            return null;
+        }
+
+        jQuery.loadScript = function (url, callback) {
+            jQuery.ajax({
+                url: url,
+                dataType: 'script',
+                success: callback,
+                async: true
+            });
+        }
+
+        function onLoadDone() {
+            var project = readParams();
+
+            if (project && project != "") {
+                path = "data/" + project + "/" + project + "_data.js";
+                console.log(path);
+                $.loadScript(path, function () {
+                    setProjectName(projectData.name);
+
+                    if (projectData.video && projectData.video != "") {
+                        createVideo(projectData.video);
+                    }
+
+                    if (projectData.ytvideo && projectData.ytvideo != "") {
+                        createYoutubeVideo(projectData.ytvideo);
+                    }             
+
+                    setProjectSpec(projectData);
+
+                    if (projectData.text && projectData.text != "") {
+                        setProjectText(projectData.text);
+                    }
+
+                    if (projectData.images && projectData.images.length != 0) {
+                        createImageBar(projectData.images);
+                    }
+                });
+            }
+        }
+
+    </script>
+
+</head>
+
+<body onload="onLoadDone();">
+
+    <div id="lightbox">
+        <div class="limage"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="close">X</div>
+    </div>
+
+    <!-- footer div end -->
+    <div id="header">
+        <div id="headercontainer">
+            <div style="float: left; overflow: auto; margin-left: auto; margin-right: auto;">
+                <a class="headerbutton" href="index.html">Portfolio</a>
+            </div>
+            <div id="headerdiv">contact@sylvgron.com</div>
+        </div>
+    </div>
+
+    <div id="push"></div>
+
+    <div id="main" class="wrapper">
+        <div id="banner">404</div>
+
+        <!-- visual content -->
+        <div id="video"></div>
+
+        <div id="specbox" class="gameinfocontainer">
+            <div id="specTextBox" class="innergameinfo">
+
+            </div>
+        </div>
+
+        <!-- visual content -->
+        <div class="gameinfocontainer">
+            <div id="textBox" class="innergameinfo">
+            </div>
+        </div>
+
+        <hr class="line" />
+        <!-- visual content -->
+        <div id="visualcontent">
+            <div id="visualcontentcenter">
+            </div>
+        </div>
+
+        <hr class="line" />
+        <!-- main div end -->
+    </div>
+
+</body>
+
+</html>

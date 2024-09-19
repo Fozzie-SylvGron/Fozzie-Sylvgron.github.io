@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="header.css" />
+    <title></title>
+
+    <script type="text/javascript" src="data/project_data.js"></script>
+    <script type="text/javascript">
+
+        function createThumbnail(targetDiv, id, image) {
+            var para = document.createElement("div");
+            para.id = "box";
+            var link = "projectpage.html?projectid=" + id;
+            para.innerHTML = "<a href='" + link + "'> <img class='port' alt='' src='" + image + "'/> </a>";
+            document.getElementById(targetDiv).appendChild(para);
+        }
+
+        function onLoadDone() {
+            for (i = 0; i < thumbnailData.length; i++) {
+                createThumbnail("container", thumbnailData[i].projectid, thumbnailData[i].img);
+            }
+
+            for (i = 0; i < schoolThumbnailData.length; i++) {
+                createThumbnail("containerSchool", schoolThumbnailData[i].projectid, schoolThumbnailData[i].img);
+            }
+        }   
+    </script>
+</head>
+
+<body onload="onLoadDone();">
+    <!-- footer div end -->
+    <div id="header">
+        <div id="headercontainer">
+            <div style="float: left; overflow: auto; margin-left: auto; margin-right: auto;">
+                <a class="headerbutton" href="index.html">Portfolio</a>
+                <!--<a class="headerbutton" href="about/about.html">About</a>-->
+            </div>
+            <div id="headerdiv">contact@sylvgron.com</div>
+        </div>
+    </div>
+    <!--<div id="push"></div> -->
+
+    <div id="main" class="wrapper">
+        <!-- banner Sylvester Grönlund Portfolio -->
+        <div id="banner"> Sylvester Gronlund Portfolio
+        </div>
+        <hr class="line" />
+
+        <div id="">
+            <a class="social" href='https://www.linkedin.com/in/sylvester-gr%C3%B6nlund-747216ba'>
+                 LinkedIN
+                </a>
+        </div> 
+        <div id="">
+            <a class="social" href='https://www.youtube.com/channel/UCi-AwA0MU_R3MjAfqb23V1A'>
+                 YouTube
+                </a>
+        </div> 
+
+        <div id="bannerSmall">(2016 - CURRENT)</div>
+        <div id="container">
+        </div>
+        <!--<hr class="line" />-->
+        <!-- content -->
+        <div id="bannerSmall"> SCHOOL (2014 - 2016)</div>
+        <div id="containerSchool">
+        </div>
+
+        <hr class="line" />
+
+        <!-- main div end -->
+    </div>
+
+
+</body>
+
+
+</html>
